@@ -21,7 +21,6 @@ export default class Cart extends Component {
 }
 
 Cart.propTypes = {
-  // handleChange: PropTypes.func.isRequired,
   shoppingCart: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
