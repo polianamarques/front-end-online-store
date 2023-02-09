@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
-import Search from './components/Search';
+import Search from './pages/Search';
+import Cart from './pages/Cart';
 
 class App extends React.Component {
   state = {
     search: '',
     productsList: [],
+    shoppingCart: [],
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -16,7 +18,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { search, productsList } = this.state;
+    const { search, productsList, shoppingCart } = this.state;
     return (
       <div>
         <Switch>
@@ -27,6 +29,14 @@ class App extends React.Component {
               search={ search }
               handleChange={ this.handleChange }
               productsList={ productsList }
+            />) }
+          />
+          <Route
+            exact
+            path="/Cart"
+            render={ () => (<Cart
+              handleChange={ this.handleChange }
+              shoppingCart={ shoppingCart }
             />) }
           />
         </Switch>
