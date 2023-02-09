@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes, { shape } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Search extends Component {
   render() {
     const { search, handleChange, productsList } = this.props;
     return (
       <div>
+        <header>
+          <Link to="/cart" data-testid="shopping-cart-button">
+            <img src="../images/Vector.png" alt="Carrinho de compras" />
+          </Link>
+        </header>
         <form>
           <label htmlFor="search">
             Busca
