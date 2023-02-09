@@ -1,25 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-// import { getProductsFromCategoryAndQuery } from './services/api';
+import { Route, Switch } from 'react-router-dom';
+import Search from './components/Search';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={ logo } className="App-logo" alt="logo" />
-        <p>Edit src/App.js and save to reload.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    search: '',
+    productsList: [],
+  };
+
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  render() {
+    const { search, productsList } = this.state;
+    return (
+      <div>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={ () => (<Search
+              search={ search }
+              handleChange={ this.handleChange }
+              productsList={ productsList }
+            />) }
+          />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;
