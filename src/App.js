@@ -6,6 +6,7 @@ import Search from './components/Search';
 class App extends React.Component {
   state = {
     search: '',
+    productsList: [],
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -15,7 +16,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { search } = this.state;
+    const { search, productsList } = this.state;
     return (
       <div>
         <Switch>
@@ -25,6 +26,7 @@ class App extends React.Component {
             render={ () => (<Search
               search={ search }
               handleChange={ this.handleChange }
+              productsList={ productsList }
             />) }
           />
         </Switch>

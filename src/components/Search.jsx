@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { shape } from 'prop-types';
 
 class Search extends Component {
   render() {
-    const { search, handleChange } = this.props;
-
+    const { search, handleChange, productsList } = this.props;
     return (
       <div>
         <form>
@@ -27,15 +26,29 @@ class Search extends Component {
             Pesquisar
           </button>
         </form>
+        <section>
+          {
+            productsList.length === 0
+              ? (
+                <p data-testid="home-initial-message">
+                  {' '}
+                  Digite algum termo
+                  de pesquisa ou escolha uma categoria.
+                </p>
+              )
+              : productsList
+          }
+        </section>
 
       </div>
     );
   }
 }
-
+// Fazer a validacao da ProductList de forma adequada
 Search.propTypes = {
   search: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  productsList: PropTypes.arrayOf(shape()).isRequired,
 };
 
 export default Search;
