@@ -33,7 +33,7 @@ class App extends React.Component {
           />
           <Route
             exact
-            path="/Cart"
+            path="/cart"
             render={ () => (<Cart
               handleChange={ this.handleChange }
               shoppingCart={ shoppingCart }
