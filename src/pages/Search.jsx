@@ -1,10 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes, { shape } from 'prop-types';
 import { Link } from 'react-router-dom';
+import CategoryList from '../Components/CategoryList';
+import { getCategories } from '../services/api';
 
 class Search extends Component {
+  state = {
+    categories: [],
+  };
+
+  componentDidMount() {
+    this.list();
+  }
+
+  list = async () => {
+    const categories = await getCategories();
+    this.setState({ categories });
+  };
+
   render() {
     const { search, handleChange, productsList } = this.props;
+    const { categories } = this.state;
     return (
       <div>
         <header>
@@ -45,7 +61,7 @@ class Search extends Component {
               : productsList
           }
         </section>
-
+        <CategoryList list={ categories } />
       </div>
     );
   }
