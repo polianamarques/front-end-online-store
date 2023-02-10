@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Search from './pages/Search';
 import Cart from './pages/Cart';
+import { getProductsFromCategoryAndQuery } from './services/api';
 
 class App extends React.Component {
   state = {
@@ -14,6 +15,14 @@ class App extends React.Component {
   handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value,
+    });
+  };
+
+  handleClick = async () => {
+    const { search } = this.state;
+    const productsList = await getProductsFromCategoryAndQuery('', search);
+    this.setState({
+      productsList: productsList.results,
     });
   };
 
@@ -29,11 +38,12 @@ class App extends React.Component {
               search={ search }
               handleChange={ this.handleChange }
               productsList={ productsList }
+              handleClick={ this.handleClick }
             />) }
           />
           <Route
             exact
-            path="/Cart"
+            path="/cart"
             render={ () => (<Cart
               handleChange={ this.handleChange }
               shoppingCart={ shoppingCart }
