@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes, { shape } from 'prop-types';
 import { Link } from 'react-router-dom';
 import ProductsList from '../components/ProductsList';
-import CategoryList from '../Components/CategoryList';
+import CategoryList from '../components/CategoryList';
 import { getCategories } from '../services/api';
 
 class Search extends Component {
