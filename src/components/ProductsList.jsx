@@ -15,7 +15,7 @@ class ProductsList extends Component {
               de pesquisa ou escolha  uma categoria.
             </p>
           ) : productsList.map((product) => (
-            <li key={ product.id } data-testid="product">
+            <li key={ product.id }>
               <Product
                 { ...product }
               />
