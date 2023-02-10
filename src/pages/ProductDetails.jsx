@@ -1,17 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import CartButton from '../components/CartButton';
-import { getProductById } from '../services/api';
 
 export default class ProductDetails extends Component {
-  componentDidMount() {
-    const { match: { params: { id } } } = this.props;
-    getProductById(id);
-  }
-
   render() {
     const { match: { params: { price, title, thumbnail } } } = this.props;
-    // id pode ser usado como prop tbm depois para anexar o produto específico no carrinho
 
     return (
       <div>
