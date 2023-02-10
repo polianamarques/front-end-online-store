@@ -24,7 +24,6 @@ class App extends React.Component {
     this.setState({
       productsList: productsList.results,
     });
-    console.log(productsList.results);
   };
 
   render() {

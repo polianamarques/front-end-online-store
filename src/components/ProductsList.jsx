@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Product from './Product';
 
 class ProductsList extends Component {
   render() {
     const { productsList } = this.props;
     return (
-      <ul data-testid="product">
+      <ul>
         {
           productsList.length === 0 ? (
             <p data-testid="home-initial-message">
@@ -13,7 +14,13 @@ class ProductsList extends Component {
               Digite algum termo
               de pesquisa ou escolha  uma categoria.
             </p>
-          ) : productsList
+          ) : productsList.map((product) => (
+            <li key={ product.id } data-testid="product">
+              <Product
+                { ...product }
+              />
+            </li>
+          ))
         }
       </ul>
     );
