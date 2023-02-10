@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes, { shape } from 'prop-types';
 import { Link } from 'react-router-dom';
+import ProductsList from '../components/ProductsList';
 
 class Search extends Component {
   render() {
@@ -36,15 +37,9 @@ class Search extends Component {
         </form>
         <section>
           {
-            productsList.length === 0
-              ? (
-                <p data-testid="home-initial-message">
-                  {' '}
-                  Digite algum termo
-                  de pesquisa ou escolha uma categoria.
-                </p>
-              )
-              : productsList
+            productsList === undefined
+              ? <p>Nenhum produto foi encontrado</p>
+              : <ProductsList productsList={ productsList } />
           }
         </section>
 

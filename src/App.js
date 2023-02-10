@@ -20,7 +20,10 @@ class App extends React.Component {
 
   handleClick = async () => {
     const { search } = this.state;
-    const productsList = await getProductsFromCategoryAndQuery(undefined, search);
+    const productsList = await getProductsFromCategoryAndQuery('', search);
+    this.setState({
+      productsList: productsList.results,
+    });
     console.log(productsList.results);
   };
 
