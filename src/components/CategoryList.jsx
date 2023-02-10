@@ -3,20 +3,31 @@ import PropTypes from 'prop-types';
 
 class CategoryList extends Component {
   render() {
-    const { list } = this.props;
+    const { list, handleClick } = this.props;
     return (
-      <div>
-        {
-          list.map((item) => (
-            <button key={ item.id } data-testid="category">{item.name}</button>
-          ))
-        }
-      </div>
+      <aside>
+        <ul>
+          {
+            list.map((item) => (
+              <li key={ item.id }>
+                <button
+                  data-testid="category"
+                  value={ item.id }
+                  onClick={ handleClick }
+                >
+                  {item.name}
+                </button>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
     );
   }
 }
 
 CategoryList.propTypes = {
+  handleClick: PropTypes.func.isRequired,
   list: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
