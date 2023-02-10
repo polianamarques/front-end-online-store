@@ -48,6 +48,10 @@ class Search extends Component {
             Pesquisar
           </button>
         </form>
+        <CategoryList
+          list={ categories }
+          handleClick={ handleClick }
+        />
         <section>
           {
             productsList === undefined
@@ -55,7 +59,7 @@ class Search extends Component {
               : <ProductsList productsList={ productsList } />
           }
         </section>
-        <CategoryList list={ categories } />
+
       </div>
     );
   }

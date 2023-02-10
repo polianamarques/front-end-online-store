@@ -19,9 +19,9 @@ class App extends React.Component {
     });
   };
 
-  handleClick = async () => {
+  handleClick = async ({ target: { value } }) => {
     const { search } = this.state;
-    const productsList = await getProductsFromCategoryAndQuery('', search);
+    const productsList = await getProductsFromCategoryAndQuery(value, search);
     this.setState({
       productsList: productsList.results,
     });
