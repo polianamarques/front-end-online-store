@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Search from './pages/Search';
 import Cart from './pages/Cart';
 import { getProductsFromCategoryAndQuery } from './services/api';
+import ProductDetails from './pages/ProductDetails';
 
 class App extends React.Component {
   state = {
@@ -31,6 +32,10 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
+          <Route
+            path="/productDetails/:id/:price/:title/:thumbnail"
+            component={ ProductDetails }
+          />
           <Route
             exact
             path="/"
