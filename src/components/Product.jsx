@@ -25,6 +25,7 @@ class Product extends Component {
           price={ price }
           title={ title }
           thumbnail={ thumbnail }
+          testID="product-add-to-cart"
         />
       </div>
     );
