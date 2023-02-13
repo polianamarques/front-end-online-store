@@ -9,6 +9,14 @@ export default class Cart extends Component {
     handleStates('quantityOnCart', quantityOnCart);
   };
 
+  handleRemoveButton = ({ target: { value } }) => {
+    const { quantityOnCart, handleStates } = this.props;
+    if (quantityOnCart[value] > 1) {
+      quantityOnCart[value] -= 1;
+    }
+    handleStates('quantityOnCart', quantityOnCart);
+  };
+
   render() {
     const { shoppingCart, quantityOnCart } = this.props;
     return (
@@ -26,6 +34,7 @@ export default class Cart extends Component {
                   { ...product }
                   quantity={ quantityOnCart[product.id] }
                   handleButtonAdd={ this.handleButtonAdd }
+                  handleRemoveButton={ this.handleRemoveButton }
 
                 />
               </li>
