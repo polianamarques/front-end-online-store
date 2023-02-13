@@ -17,5 +17,6 @@ export async function getProductById(id) {
   const URL_API = `https://api.mercadolibre.com/items/${id}`;
   const dataProductID = await fetch(URL_API);
   const data = await dataProductID.json();
+  console.log(data);
   return data;
 }
