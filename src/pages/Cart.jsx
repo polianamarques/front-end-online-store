@@ -17,6 +17,12 @@ export default class Cart extends Component {
     handleStates('quantityOnCart', quantityOnCart);
   };
 
+  removeProduct = ({ target: { value } }) => {
+    const { shoppingCart, handleStates } = this.props;
+    const filter = shoppingCart.filter(({ id }) => id !== value);
+    handleStates('shoppingCart', filter);
+  };
+
   render() {
     const { shoppingCart, quantityOnCart } = this.props;
     return (
@@ -35,6 +41,7 @@ export default class Cart extends Component {
                   quantity={ quantityOnCart[product.id] }
                   handleButtonAdd={ this.handleButtonAdd }
                   handleRemoveButton={ this.handleRemoveButton }
+                  removeProduct={ this.removeProduct }
 
                 />
               </li>

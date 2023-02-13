@@ -9,7 +9,8 @@ class CartContent extends Component {
       quantity,
       id,
       handleButtonAdd,
-      handleRemoveButton } = this.props;
+      handleRemoveButton,
+      removeProduct } = this.props;
     return (
       <div>
         <img src={ thumbnail } alt={ title } />
@@ -34,6 +35,7 @@ class CartContent extends Component {
           <button
             data-testid="remove-product"
             value={ id }
+            onClick={ removeProduct }
           >
             Remover item
           </button>
@@ -51,6 +53,7 @@ CartContent.propTypes = {
   handleButtonAdd: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   handleRemoveButton: PropTypes.func.isRequired,
+  removeProduct: PropTypes.func.isRequired,
 };
 
 export default CartContent;
