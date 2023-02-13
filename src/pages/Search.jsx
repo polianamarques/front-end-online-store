@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes, { shape } from 'prop-types';
-import { Link } from 'react-router-dom';
 import ProductsList from '../components/ProductsList';
 import CategoryList from '../components/CategoryList';
 import { getCategories } from '../services/api';
+import CartButton from '../components/CartButton';
 
 class Search extends Component {
   state = {
@@ -25,11 +25,7 @@ class Search extends Component {
 
     return (
       <div>
-        <header>
-          <Link to="/cart" data-testid="shopping-cart-button">
-            <img src="../images/Vector.png" alt="Carrinho de compras" />
-          </Link>
-        </header>
+        <CartButton />
         <form>
           <label htmlFor="search">
             Busca
