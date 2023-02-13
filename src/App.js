@@ -51,7 +51,7 @@ class App extends React.Component {
       <div>
         <Switch>
           <Route
-            path="/productDetails/:id/:price/:title/:thumbnail"
+            path="/productDetails/:id"
             component={ ProductDetails }
           />
           <Route

@@ -8,7 +8,7 @@ class Product extends Component {
     return (
       <div data-testid="product">
         <Link
-          to={ `/productDetails/${id}/${price}/${title}/${thumbnail}` } // Tentar resolver o problema da saúde e das ferramentas
+          to={ `/productDetails/${id}` } // Tentar resolver o problema da saúde e das ferramentas
           data-testid="product-detail-link"
         >
           <img src={ thumbnail } alt={ `Imagem de ${title}` } />

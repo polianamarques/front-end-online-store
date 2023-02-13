@@ -1,10 +1,27 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import CartButton from '../components/CartButton';
+import { getProductById } from '../services/api';
 
 export default class ProductDetails extends Component {
+  state = {
+    product: {},
+  };
+
+  componentDidMount() {
+    this.getProductDetails();
+  }
+
+  getProductDetails = async () => {
+    const { match: { params: { id } } } = this.props;
+    const product = await getProductById(id);
+    this.setState({
+      product,
+    });
+  };
+
   render() {
-    const { match: { params: { price, title, thumbnail } } } = this.props;
+    const { product: { price, title, thumbnail } } = this.state;
 
     return (
       <div>
