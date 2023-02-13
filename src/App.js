@@ -28,6 +28,11 @@ class App extends React.Component {
     });
   };
 
+  saveProduct = () => {
+    const { quantityOnCart, shoppingCart } = this.state;
+    localStorage.setItem('cart', JSON.stringify({ quantityOnCart, shoppingCart }));
+  };
+
   addProductToCart = (product) => {
     const { shoppingCart, quantityOnCart } = this.state;
     const productOnCart = shoppingCart.find(({ id }) => id === product.id);
@@ -35,13 +40,13 @@ class App extends React.Component {
       quantityOnCart[productOnCart.id] += 1;
       this.setState({
         quantityOnCart,
-      });
+      }, this.saveProduct);
     } else {
       quantityOnCart[product.id] = 1;
       this.setState({
         shoppingCart: [...shoppingCart, product],
         quantityOnCart,
-      });
+      }, this.saveProduct);
     }
   };
 
