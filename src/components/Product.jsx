@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ProductToCartButton from './ProductToCartButton';
 
 class Product extends Component {
   render() {
@@ -8,7 +9,7 @@ class Product extends Component {
     return (
       <div data-testid="product">
         <Link
-          to={ `/productDetails/${id}` } // Tentar resolver o problema da saúde e das ferramentas
+          to={ `/productDetails/${id}` }
           data-testid="product-detail-link"
         >
           <img src={ thumbnail } alt={ `Imagem de ${title}` } />
@@ -18,13 +19,13 @@ class Product extends Component {
           R$
           <span>{ price }</span>
         </p>
-        <button
-          value={ id }
-          data-testid="product-add-to-cart"
-          onClick={ () => addProductToCart({ id, price, title, thumbnail }) }
-        >
-          Adicionar ao carrinho
-        </button>
+        <ProductToCartButton
+          addProductToCart={ addProductToCart }
+          id={ id }
+          price={ price }
+          title={ title }
+          thumbnail={ thumbnail }
+        />
       </div>
     );
   }

@@ -21,7 +21,8 @@ export default class ProductDetails extends Component {
   };
 
   render() {
-    const { product: { price, title, thumbnail } } = this.state;
+    const { addProductToCart } = this.props;
+    const { product: { id, price, title, thumbnail } } = this.state;
 
     return (
       <div>
@@ -34,6 +35,13 @@ export default class ProductDetails extends Component {
         <h3 data-testid="product-detail-price">
           { price }
         </h3>
+        <button
+          value={ id }
+          data-testid="product-add-to-cart"
+          onClick={ () => addProductToCart({ id, price, title, thumbnail }) }
+        >
+          Adicionar ao carrinho
+        </button>
       </div>
     );
   }
@@ -48,4 +56,5 @@ ProductDetails.propTypes = {
       thumbnail: PropTypes.string,
     }),
   }).isRequired,
+  addProductToCart: PropTypes.func.isRequired,
 };
