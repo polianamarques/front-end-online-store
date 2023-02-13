@@ -27,6 +27,14 @@ class App extends React.Component {
     });
   };
 
+  addProductToCart = (product) => {
+    const { shoppingCart } = this.state;
+
+    this.setState({
+      shoppingCart: [...shoppingCart, product],
+    });
+  };
+
   render() {
     const { search, productsList, shoppingCart } = this.state;
     return (
@@ -44,6 +52,7 @@ class App extends React.Component {
               handleChange={ this.handleChange }
               productsList={ productsList }
               handleClick={ this.handleClick }
+              addProductToCart={ this.addProductToCart }
             />) }
           />
           <Route

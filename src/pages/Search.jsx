@@ -20,7 +20,13 @@ class Search extends Component {
   };
 
   render() {
-    const { search, handleChange, productsList, handleClick } = this.props;
+    const {
+      search,
+      handleChange,
+      productsList,
+      handleClick,
+      addProductToCart,
+    } = this.props;
     const { categories } = this.state;
 
     return (
@@ -56,7 +62,12 @@ class Search extends Component {
           {
             productsList === undefined
               ? <p>Nenhum produto foi encontrado</p>
-              : <ProductsList productsList={ productsList } />
+              : (
+                <ProductsList
+                  productsList={ productsList }
+                  addProductToCart={ addProductToCart }
+                />
+              )
           }
         </section>
 
@@ -75,6 +86,7 @@ Search.propTypes = {
     price: PropTypes.number,
   })).isRequired,
   handleClick: PropTypes.func.isRequired,
+  addProductToCart: PropTypes.func.isRequired,
 };
 
 export default Search;

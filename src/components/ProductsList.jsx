@@ -4,7 +4,7 @@ import Product from './Product';
 
 class ProductsList extends Component {
   render() {
-    const { productsList } = this.props;
+    const { productsList, addProductToCart } = this.props;
     return (
       <ul>
         {
@@ -18,6 +18,7 @@ class ProductsList extends Component {
             <li key={ product.id }>
               <Product
                 { ...product }
+                addProductToCart={ addProductToCart }
               />
             </li>
           ))
@@ -34,6 +35,7 @@ ProductsList.propTypes = {
     thumbnail: PropTypes.string,
     price: PropTypes.number,
   })).isRequired,
+  addProductToCart: PropTypes.func.isRequired,
 };
 
 export default ProductsList;
