@@ -29,6 +29,12 @@ class App extends React.Component {
     });
   }
 
+  handleStates = (state, value) => {
+    this.setState({
+      [state]: value,
+    });
+  };
+
   handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value,
@@ -92,6 +98,7 @@ class App extends React.Component {
               handleChange={ this.handleChange }
               shoppingCart={ shoppingCart }
               quantityOnCart={ quantityOnCart }
+              handleStates={ this.handleStates }
             />) }
           />
         </Switch>

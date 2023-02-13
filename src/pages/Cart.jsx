@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 import CartContent from '../components/CartContent';
 
 export default class Cart extends Component {
+  handleButtonAdd = ({ target: { value } }) => {
+    const { quantityOnCart, handleStates } = this.props;
+    quantityOnCart[value] += 1;
+    handleStates('quantityOnCart', quantityOnCart);
+  };
+
   render() {
     const { shoppingCart, quantityOnCart } = this.props;
     return (
@@ -16,7 +22,12 @@ export default class Cart extends Component {
             )
             : shoppingCart.map((product) => (
               <li key={ product.id }>
-                <CartContent { ...product } quantity={ quantityOnCart[product.id] } />
+                <CartContent
+                  { ...product }
+                  quantity={ quantityOnCart[product.id] }
+                  handleButtonAdd={ this.handleButtonAdd }
+
+                />
               </li>
             ))
         }
@@ -33,4 +44,5 @@ Cart.propTypes = {
     price: PropTypes.number.isRequired,
   })).isRequired,
   quantityOnCart: PropTypes.objectOf(PropTypes.number).isRequired,
+  handleStates: PropTypes.func.isRequired,
 };
