@@ -14,6 +14,21 @@ class App extends React.Component {
     quantityOnCart: {},
   };
 
+  componentDidMount() {
+    const cart = localStorage.getItem('cart');
+    const savedProducts = {
+      shoppingCart: [],
+      quantityOnCart: {},
+    };
+
+    const { shoppingCart, quantityOnCart } = cart === null
+      ? savedProducts : JSON.parse(cart);
+    this.setState({
+      shoppingCart,
+      quantityOnCart,
+    });
+  }
+
   handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value,
