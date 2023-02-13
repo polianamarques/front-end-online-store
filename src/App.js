@@ -11,6 +11,7 @@ class App extends React.Component {
     search: '',
     productsList: [],
     shoppingCart: [],
+    quantityOnCart: {},
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -28,15 +29,24 @@ class App extends React.Component {
   };
 
   addProductToCart = (product) => {
-    const { shoppingCart } = this.state;
-
-    this.setState({
-      shoppingCart: [...shoppingCart, product],
-    });
+    const { shoppingCart, quantityOnCart } = this.state;
+    const productOnCart = shoppingCart.find(({ id }) => id === product.id);
+    if (productOnCart) {
+      quantityOnCart[productOnCart.id] += 1;
+      this.setState({
+        quantityOnCart,
+      });
+    } else {
+      quantityOnCart[product.id] = 1;
+      this.setState({
+        shoppingCart: [...shoppingCart, product],
+        quantityOnCart,
+      });
+    }
   };
 
   render() {
-    const { search, productsList, shoppingCart } = this.state;
+    const { search, productsList, shoppingCart, quantityOnCart } = this.state;
     return (
       <div>
         <Switch>
@@ -61,6 +71,7 @@ class App extends React.Component {
             render={ () => (<Cart
               handleChange={ this.handleChange }
               shoppingCart={ shoppingCart }
+              quantityOnCart={ quantityOnCart }
             />) }
           />
         </Switch>
