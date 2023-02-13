@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import CartButton from '../components/CartButton';
 import { getProductById } from '../services/api';
+import ProductToCartButton from '../components/ProductToCartButton';
 
 export default class ProductDetails extends Component {
   state = {
@@ -21,7 +22,8 @@ export default class ProductDetails extends Component {
   };
 
   render() {
-    const { product: { price, title, thumbnail } } = this.state;
+    const { addProductToCart } = this.props;
+    const { product: { id, price, title, thumbnail } } = this.state;
 
     return (
       <div>
@@ -34,6 +36,14 @@ export default class ProductDetails extends Component {
         <h3 data-testid="product-detail-price">
           { price }
         </h3>
+        <ProductToCartButton
+          addProductToCart={ addProductToCart }
+          id={ id }
+          price={ price }
+          title={ title }
+          thumbnail={ thumbnail }
+          testID="product-detail-add-to-cart"
+        />
       </div>
     );
   }
@@ -48,4 +58,5 @@ ProductDetails.propTypes = {
       thumbnail: PropTypes.string,
     }),
   }).isRequired,
+  addProductToCart: PropTypes.func.isRequired,
 };
