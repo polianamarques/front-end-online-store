@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import CartContent from '../components/CartContent';
 
 export default class Cart extends Component {
   render() {
-    const { shoppingCart } = this.props;
+    const { shoppingCart, quantityOnCart } = this.props;
     return (
-      <div>
+      <ul>
         {
           shoppingCart.length === 0
             ? (
@@ -13,9 +14,13 @@ export default class Cart extends Component {
                 Seu carrinho está vazio
               </p>
             )
-            : shoppingCart
+            : shoppingCart.map((product) => (
+              <li key={ product.id }>
+                <CartContent { ...product } quantity={ quantityOnCart[product.id] } />
+              </li>
+            ))
         }
-      </div>
+      </ul>
     );
   }
 }
@@ -27,4 +32,5 @@ Cart.propTypes = {
     thumbnail: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   })).isRequired,
+  quantityOnCart: PropTypes.objectOf(PropTypes.number).isRequired,
 };

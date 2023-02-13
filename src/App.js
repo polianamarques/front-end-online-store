@@ -11,6 +11,7 @@ class App extends React.Component {
     search: '',
     productsList: [],
     shoppingCart: [],
+    quantityOnCart: {},
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -27,8 +28,25 @@ class App extends React.Component {
     });
   };
 
+  addProductToCart = (product) => {
+    const { shoppingCart, quantityOnCart } = this.state;
+    const productOnCart = shoppingCart.find(({ id }) => id === product.id);
+    if (productOnCart) {
+      quantityOnCart[productOnCart.id] += 1;
+      this.setState({
+        quantityOnCart,
+      });
+    } else {
+      quantityOnCart[product.id] = 1;
+      this.setState({
+        shoppingCart: [...shoppingCart, product],
+        quantityOnCart,
+      });
+    }
+  };
+
   render() {
-    const { search, productsList, shoppingCart } = this.state;
+    const { search, productsList, shoppingCart, quantityOnCart } = this.state;
     return (
       <div>
         <Switch>
@@ -44,6 +62,7 @@ class App extends React.Component {
               handleChange={ this.handleChange }
               productsList={ productsList }
               handleClick={ this.handleClick }
+              addProductToCart={ this.addProductToCart }
             />) }
           />
           <Route
@@ -52,6 +71,7 @@ class App extends React.Component {
             render={ () => (<Cart
               handleChange={ this.handleChange }
               shoppingCart={ shoppingCart }
+              quantityOnCart={ quantityOnCart }
             />) }
           />
         </Switch>
