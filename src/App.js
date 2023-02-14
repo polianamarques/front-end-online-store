@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Search from './pages/Search';
 import Cart from './pages/Cart';
 import { getProductsFromCategoryAndQuery } from './services/api';
 import ProductDetails from './pages/ProductDetails';
+import './index.css';
 
 class App extends React.Component {
   state = {

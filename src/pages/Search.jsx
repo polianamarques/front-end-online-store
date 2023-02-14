@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes, { shape } from 'prop-types';
+import { SearchOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import ProductsList from '../components/ProductsList';
 import CategoryList from '../components/CategoryList';
 import { getCategories } from '../services/api';
 import CartButton from '../components/CartButton';
+import styles from './Search.module.css';
 
 class Search extends Component {
   state = {
@@ -30,10 +33,10 @@ class Search extends Component {
     const { categories } = this.state;
 
     return (
-      <div>
+      <div className={ styles.searchContainer }>
         <CartButton />
         <form>
-          <label htmlFor="search">
+          <label htmlFor="search" className="">
             Busca
             <input
               data-testid="query-input"
@@ -45,14 +48,24 @@ class Search extends Component {
               onChange={ handleChange }
             />
           </label>
-          <button
+          <Button
+            className={ styles.searchButton }
+            icon={ <SearchOutlined /> }
+            data-testid="query-button"
+            name="search-button"
+            type="button"
+            onClick={ handleClick }
+          >
+            Search
+          </Button>
+          {/* <button
             data-testid="query-button"
             name="search-button"
             type="button"
             onClick={ handleClick }
           >
             Pesquisar
-          </button>
+          </button> */}
         </form>
         <CategoryList
           list={ categories }

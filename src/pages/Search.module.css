@@ -1,0 +1,13 @@
+.searchContainer {
+  background: var(--darker-blue);
+}
+
+.searchButton {
+  background: var(--kinda-of-gray);
+  color: var(--nude);
+}
+
+.searchButton:hover {
+  background: var(--vanilla-gray);
+  
+}
