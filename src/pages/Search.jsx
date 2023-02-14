@@ -36,9 +36,9 @@ class Search extends Component {
       <div className={ styles.searchContainer }>
         <CartButton />
         <form>
-          <label htmlFor="search" className="">
-            Busca
+          <label htmlFor="search">
             <input
+              className={ styles.inputSearch }
               data-testid="query-input"
               name="search"
               id="search"
@@ -55,9 +55,7 @@ class Search extends Component {
             name="search-button"
             type="button"
             onClick={ handleClick }
-          >
-            Search
-          </Button>
+          />
           {/* <button
             data-testid="query-button"
             name="search-button"

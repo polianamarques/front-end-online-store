@@ -7,7 +7,29 @@
   color: var(--nude);
 }
 
-.searchButton:hover {
+.searchButton:hover, .inputSearch:hover {
   background: var(--vanilla-gray);
-  
+}
+
+.inputSearch {
+  background: var(--kinda-of-gray);
+  border: none;
+  border-radius: 6px;
+  display: inline-flex;
+  font-size: 14px;
+  height: 32px;
+  margin: 3px;
+  padding: 4px 15px;
+
+  /* color: var(--nude); */
+}
+
+input::placeholder {
+  background: rgba(62, 92, 118, 0);
+  border-width: 0;
+  color: var(--nude);
+}
+
+input::placeholder:hover {
+  background: var(--vanilla-gray);
 }
