@@ -33,7 +33,7 @@ class Search extends Component {
     const { categories } = this.state;
 
     return (
-      <div className={ styles.searchContainer }>
+      <div>
         <header>
           <CartButton />
           <form>
@@ -67,23 +67,24 @@ class Search extends Component {
           </button> */}
           </form>
         </header>
-        <CategoryList
-          list={ categories }
-          handleClick={ handleClick }
-        />
-        <section className={ styles.searchSection }>
-          {
-            productsList === undefined
-              ? <p>Nenhum produto foi encontrado</p>
-              : (
-                <ProductsList
-                  productsList={ productsList }
-                  addProductToCart={ addProductToCart }
-                />
-              )
-          }
-        </section>
-
+        <div className={ styles.searchContainer }>
+          <CategoryList
+            list={ categories }
+            handleClick={ handleClick }
+          />
+          <section className={ styles.searchSection }>
+            {
+              productsList === undefined
+                ? <p>Nenhum produto foi encontrado</p>
+                : (
+                  <ProductsList
+                    productsList={ productsList }
+                    addProductToCart={ addProductToCart }
+                  />
+                )
+            }
+          </section>
+        </div>
       </div>
     );
   }

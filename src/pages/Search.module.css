@@ -1,5 +1,6 @@
 .searchContainer {
   background: var(--darker-blue);
+  display: flex;
 }
 
 .searchButton {
@@ -9,7 +10,7 @@
 
 .inputSearch {
   background: var(--kinda-of-gray);
-  border: none;
+  border:none;
   border-radius: 6px;
   display: inline-flex;
   font-size: 14px;
@@ -20,8 +21,15 @@
   /* color: var(--nude); */
 }
 
+
 .searchButton:hover, .inputSearch:hover {
   background: var(--vanilla-gray);
+  border-color: var(--darker-blue) 3px solid;
+}
+
+.inputSearch:hover {
+  border: 1px var(--nude) solid;
+
 }
 
 input::placeholder {
