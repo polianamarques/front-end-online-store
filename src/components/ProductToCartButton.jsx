@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'antd';
+import styles from './productToCartButton.module.css';
 
 class ProductToCartButton extends Component {
   render() {
     const { addProductToCart, id, price, title, thumbnail, testID } = this.props;
     return (
       <div>
-        <button
+        <Button
+          className={ styles.button }
+          type="primary"
+          block
           value={ id }
           data-testid={ testID }
           onClick={ () => addProductToCart({ id, price, title, thumbnail }) }
         >
           Adicionar ao carrinho
-        </button>
+        </Button>
+        {/* <button
+          value={ id }
+          data-testid={ testID }
+          onClick={ () => addProductToCart({ id, price, title, thumbnail }) }
+        >
+          Adicionar ao carrinho
+        </button> */}
       </div>
     );
   }

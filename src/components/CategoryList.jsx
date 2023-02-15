@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'antd';
+import styles from './aside.module.css';
 
 class CategoryList extends Component {
   render() {
@@ -10,13 +12,22 @@ class CategoryList extends Component {
           {
             list.map((item) => (
               <li key={ item.id }>
-                <button
+                <Button
+                  className={ styles.categoriesButton }
+                  block
                   data-testid="category"
                   value={ item.id }
                   onClick={ handleClick }
                 >
                   {item.name}
-                </button>
+                </Button>
+                {/* <button
+                  data-testid="category"
+                  value={ item.id }
+                  onClick={ handleClick }
+                >
+                  {item.name}
+                </button> */}
               </li>
             ))
           }

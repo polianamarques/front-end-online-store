@@ -1,0 +1,26 @@
+.cardProduct {
+  background: rgba(240, 235, 216, 0.348);
+  border: var(--vanilla-gray) solid 2px;
+  border-radius: 6px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+}
+
+.cardProduct:hover {
+  background: var(--kinda-of-gray);
+}
+
+.name {
+  font-weight: 700;
+  text-align: center;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.imgProduct {
+  border-radius: 6px;
+  height: 200px;
+}

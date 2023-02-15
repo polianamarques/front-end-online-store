@@ -1,0 +1,8 @@
+aside {
+  background: var(--nude);
+  max-width: 195px;
+}
+
+.categoriesButton {
+  color: var(--darker-blue);
+}

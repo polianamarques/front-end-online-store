@@ -7,10 +7,6 @@
   color: var(--nude);
 }
 
-.searchButton:hover, .inputSearch:hover {
-  background: var(--vanilla-gray);
-}
-
 .inputSearch {
   background: var(--kinda-of-gray);
   border: none;
@@ -22,6 +18,10 @@
   padding: 4px 15px;
 
   /* color: var(--nude); */
+}
+
+.searchButton:hover, .inputSearch:hover {
+  background: var(--vanilla-gray);
 }
 
 input::placeholder {

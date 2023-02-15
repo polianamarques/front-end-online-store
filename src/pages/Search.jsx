@@ -34,29 +34,30 @@ class Search extends Component {
 
     return (
       <div className={ styles.searchContainer }>
-        <CartButton />
-        <form>
-          <label htmlFor="search">
-            <input
-              className={ styles.inputSearch }
-              data-testid="query-input"
-              name="search"
-              id="search"
-              type="text"
-              placeholder="Digite o nome do produto"
-              value={ search }
-              onChange={ handleChange }
+        <header>
+          <CartButton />
+          <form>
+            <label htmlFor="search">
+              <input
+                className={ styles.inputSearch }
+                data-testid="query-input"
+                name="search"
+                id="search"
+                type="text"
+                placeholder="Digite o nome do produto"
+                value={ search }
+                onChange={ handleChange }
+              />
+            </label>
+            <Button
+              className={ styles.searchButton }
+              icon={ <SearchOutlined /> }
+              data-testid="query-button"
+              name="search-button"
+              type="button"
+              onClick={ handleClick }
             />
-          </label>
-          <Button
-            className={ styles.searchButton }
-            icon={ <SearchOutlined /> }
-            data-testid="query-button"
-            name="search-button"
-            type="button"
-            onClick={ handleClick }
-          />
-          {/* <button
+            {/* <button
             data-testid="query-button"
             name="search-button"
             type="button"
@@ -64,12 +65,13 @@ class Search extends Component {
           >
             Pesquisar
           </button> */}
-        </form>
+          </form>
+        </header>
         <CategoryList
           list={ categories }
           handleClick={ handleClick }
         />
-        <section>
+        <section className={ styles.searchSection }>
           {
             productsList === undefined
               ? <p>Nenhum produto foi encontrado</p>
